@@ -7,7 +7,6 @@ import { promisify } from 'util';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
-import { AI_API_URL, AI_API_KEY, AI_MODEL, SYSTEM_PROMPT, TIP_PROMPT, DEFAULT_AI_MODEL } from '../constants.ts';
 
 const execAsync = promisify(exec);
 const __filename = fileURLToPath(import.meta.url);
@@ -97,11 +96,5 @@ const server = app.listen(0, async () => {
   const url = `http://localhost:${port}`;
   console.log(`\n🚀 CR Code Review Tool is running at ${url}`);
   console.log(`📂 Analyzing project: ${PROJECT_ROOT}\n`);
-
-  if (!AI_API_URL || !AI_API_KEY || !AI_MODEL || !SYSTEM_PROMPT || !TIP_PROMPT || !DEFAULT_AI_MODEL) {
-    console.error("⚠️  ERROR: config not set in constants.ts");
-    console.error("   The AI analysis will not work.\n");
-  }
-
   await open(url);
 });
