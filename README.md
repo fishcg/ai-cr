@@ -2,7 +2,7 @@
 
 CR 是一个现代化的命令行风格代码审查工具，旨在通过 AI 为您提供即时的代码分析、问题检测和重构建议。
 
-灵感来源于 Claude Code 和 Xcode 的界面设计，旨在提供最优雅的开发者体验。
+灵感来源于 Claude Code 和 Xcode 的界面设计
 
 ![cr-demo](https://github.com/user-attachments/assets/556077f5-a996-46cf-aee8-f64a25228d1f)
 
@@ -35,20 +35,17 @@ cp ./constants.bac ./constants.ts
 
 ```bash
 # 安装依赖
-$ npm install
+$ make install
 
 # 正式编译
-$ npm run build
-
-# link 全局 cr 命令
-$ npm link
+$ make
 ```
 
 ### 3. 在项目中使用
 在任意 Git 项目根目录下，运行 `cr` 命令：
 
 ```bash
-# 打开命令行工具，cd 到需要 code review 的应用目录
+# 打开命令行工具，cd 到需要 code review 的应用目录，注意项目中需要有未提交的变更
 $ cd your_app_dir
 
 # 启动 AI code review
