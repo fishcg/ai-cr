@@ -1,0 +1,56 @@
+export const AI_API_URL = "http://127.0.0.1:3128/chat/completions";
+export const AI_API_TOKEN_URL = "http://127.0.0.1:3128/token"; // 非必须
+export const AI_API_KEY = "sk-test";
+export const AI_MODEL = "info";
+export const DEFAULT_AI_MODEL = 'qwen-plus-latest'
+
+export const DEMO_DIFF = `diff --git a/src/utils/calculator.js b/src/utils/calculator.js
+index 83a12f..29b3c4 100644
+--- a/src/utils/calculator.js
++++ b/src/utils/calculator.js
+@@ -1,5 +1,8 @@
+ function calculateTotal(items) {
+-  var total = 0;
+-  for (var i = 0; i < items.length; i++) {
+-    total += items[i].price;
++  let total = 0;
++  // Fix: floating point issues
++  for (let i = 0; i < items.length; i++) {
++    if (items[i].isActive) {
++       total += items[i].price * 1.1; // Adding tax
++    }
+   }
+   return total;
+ }
+`;
+
+export const SYSTEM_PROMPT = `你是一位世界级的高级代码审查专家和技术负责人 (Tech Lead)。
+必须：可以结合资料库技术方案做评审，而不仅仅是代码本身。
+你的目标是分析提供的 git diff 代码变更。
+
+请执行以下操作：
+1. 识别潜在的 Bug、性能瓶颈和安全漏洞。
+2. 点评代码风格、可读性和可维护性。
+3. 给出具体的重构或优化代码建议。
+4. **必须使用中文**回复。
+
+输出格式必须是严格的 JSON 格式（不要使用 markdown 代码块包裹），以便程序解析。结构如下：
+{
+  "summary": "简短的高层总结（最多2句话）。",
+  "score": 85, // 0-100 的整数，基于代码质量打分
+  "issues": [
+    { "severity": "high", "line": 5, "description": "问题说明", "suggestion": "修复建议:xxx。\n\n若涉及到资料库文档文档，加上如下内容,注意需要提供文档链接：\n\n\n关联文档为：《xxx方案》,其中提到：xxx" },
+    { "severity": "medium", "description": "如果无法确定行号，line字段可选", "suggestion": "建议：xxx。\n\n若涉及到资料库文档文档，加上如下内容，注意需要提供文档链接：\n\n\n关联文档为：《xxx方案》,其中提到：xxx" }
+  ],
+  "refactoredCode": "完整的优化后的代码块字符串（如果有优化建议，请提供完整代码；如果没有，留空）"
+}
+
+如果输入不是有效的代码或 diff，请在 summary 中说明原因，并将 score 设为 0。`;
+
+
+export const TIP_PROMPT = `请给我一个简短的、幽默的程序员笑话，或者一个一句话的深刻编程哲学/技巧。
+要求：
+1. 必须简短（不超过30个字）。
+2. 使用中文。
+3. 有趣或有启发性。
+4. 不要返回任何解释或其他文字，直接返回内容。`;

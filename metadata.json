@@ -1,0 +1,5 @@
+{
+  "name": "CR - AI 代码审查助手",
+  "description": "一个极具未来感的 AI 代码审查工具，模拟 CLI 界面。支持可视化 Git Diff，自动生成代码分析报告及优化建议。",
+  "requestFramePermissions": []
+}
