@@ -1,8 +1,9 @@
 export const AI_API_URL = "http://127.0.0.1:3128/chat/completions";
 export const AI_API_TOKEN_URL = "http://127.0.0.1:3128/token"; // 非必须
-export const AI_API_KEY = "sk-test";
+export const AI_API_KEY = "sk-test"
 export const AI_MODEL = "info";
 export const DEFAULT_AI_MODEL = 'qwen-plus-latest'
+
 
 export const DEMO_DIFF = `diff --git a/src/utils/calculator.js b/src/utils/calculator.js
 index 83a12f..29b3c4 100644
@@ -34,23 +35,20 @@ export const SYSTEM_PROMPT = `你是一位世界级的高级代码审查专家�
 3. 给出具体的重构或优化代码建议。
 4. **必须使用中文**回复。
 
-输出格式必须是严格的 JSON 格式（不要使用 markdown 代码块包裹），以便程序解析。结构如下：
+输出格式必须是严格的 JSON 格式！！！（不要使用 markdown 代码块包裹，不要在回复的前后添加引号），以便程序解析。结构如下：
 {
   "summary": "简短的高层总结（最多2句话）。",
-  "score": 85, // 0-100 的整数，基于代码质量打分
+  "score": 85, // 0-100 的整数，基于代码质量打分。如果出现语法错误或编译错误，必须打 0 分！
   "issues": [
-    { "severity": "high", "line": 5, "description": "问题说明", "suggestion": "修复建议:xxx。\n\n若涉及到资料库文档文档，加上如下内容,注意需要提供文档链接：\n\n\n关联文档为：《xxx方案》,其中提到：xxx" },
-    { "severity": "medium", "description": "如果无法确定行号，line字段可选", "suggestion": "建议：xxx。\n\n若涉及到资料库文档文档，加上如下内容，注意需要提供文档链接：\n\n\n关联文档为：《xxx方案》,其中提到：xxx" }
+    { "severity": "high", "line": 5, "description": "问题说明", "suggestion": "修复建议:xxx。\n\n若涉及到资料库文档文档，加上如下内容,注意需要提供文档链接（a 标签）：\n\n\n关联文档为：《xxx方案》,其中提到：xxx" },
+    { "severity": "medium", "description": "如果无法确定行号，line字段可选", "suggestion": "建议：xxx。\n\n若涉及到资料库文档文档，加上如下内容，注意需要提供文档链接（a 标签）：\n\n\n关联文档为：《xxx方案》,其中提到：xxx" }
   ],
   "refactoredCode": "完整的优化后的代码块字符串（如果有优化建议，请提供完整代码；如果没有，留空）"
 }
 
 如果输入不是有效的代码或 diff，请在 summary 中说明原因，并将 score 设为 0。`;
 
-
-export const TIP_PROMPT = `请给我一个简短的、幽默的程序员笑话，或者一个一句话的深刻编程哲学/技巧。
-要求：
-1. 必须简短（不超过30个字）。
-2. 使用中文。
-3. 有趣或有启发性。
-4. 不要返回任何解释或其他文字，直接返回内容。`;
+export const TIP_PROMPT = `请严格生成且仅生成 3 个互不相同的科普或历史知识。要求：
+- 每则独立成行，用数字编号（1. 2. 3.）开头；
+- 每则 ≤ 50 字，禁止解释、评论、空行或额外符号；
+直接输出，无任何前导/后缀文字。`;
