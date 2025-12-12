@@ -1,8 +1,11 @@
-# CR - AI Code Review Tool for Miaosila
+# CR - AI Code Review Tool
 
 CR 是一个现代化的命令行风格代码审查工具，旨在通过 AI 为您提供即时的代码分析、问题检测和重构建议。
 
 灵感来源于 Claude Code 和 Xcode 的界面设计，旨在提供最优雅的开发者体验。
+
+![cr-demo](https://github.com/user-attachments/assets/556077f5-a996-46cf-aee8-f64a25228d1f)
+
 
 ## 功能特性
 
@@ -64,6 +67,17 @@ $ cr
 
 **连接 AI 失败**
 检查 AI 服务是否运行
+
+## 效果
+
+- 自动捕获 Git 变更，支持手动添加上下文
+  ![cr-demo](https://github.com/user-attachments/assets/36269614-54b6-4cb4-8f2d-78facb85b6db)
+
+- 有趣的加载页面
+  ![cr-demo](https://github.com/user-attachments/assets/1eec8c64-7269-4d5a-b17f-3229bdb21a5c)
+
+- 生成报告页面展示
+  ![cr-demo](https://github.com/user-attachments/assets/556077f5-a996-46cf-aee8-f64a25228d1f)
 
 ## 贡献
 

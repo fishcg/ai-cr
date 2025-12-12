@@ -7,7 +7,8 @@ import { promisify } from 'util';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import fs from 'fs';
-bin/server.js
+import { AI_API_URL, AI_API_KEY, AI_MODEL, SYSTEM_PROMPT, TIP_PROMPT, DEFAULT_AI_MODEL } from '../constants.ts';
+
 const execAsync = promisify(exec);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
